@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="/css/custom.css">
+
+
+    </head>
+    <body>
+
+        <form action="/saveNews" method="POST" th:object="${news}">
+
+            <div th:class="form-group">
+                <label>Title</label>
+                <input th:class="form-control" type="text" th:field="*{title}">
+                <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="error"></p>
+            </div>
+
+
+            <div th:class="form-group">
+                <label>summary</label>
+                <input th:class="form-control" type="text" th:field="*{summary}">
+                <p th:if="${#fields.hasErrors('summary')}" th:errors="*{summary}" class="error"></p>
+            </div>
+
+            <div th:class="form-group">
+                <label>Content</label>
+                <input th:class="form-control" type="text" th:field="*{contents}">
+                <p th:if="${#fields.hasErrors('contents')}" th:errors="*{contents}" class="error"></p>
+            </div>
+
+
+            <div th:class="form-group">
+                <label>staff Name</label>
+                <select th:field="*{staff.staffId}" th:class="form-control">
+                    <option value="0" disabled>--Chọn nhận viên--</option>
+                    <option th:each="staff: ${staffs}" th:value="${staff.staffId}" th:text="${staff.staffName}"></option>
+                </select>
+                <p th:if="${#fields.hasErrors('staff')}" th:errors="*{staff}" class="error"></p>
+            </div>
+
+            <div th:class="form-group">
+                <label>Category Name</label>
+                <select th:field="*{category.cateId}" th:class="form-control">
+                    <option value="0" disabled>--Chọn thể thoại--</option>
+                    <option th:each="cate: ${cates}" th:value="${cate.cateId}" th:text="${cate.cateName}"></option>
+                </select>
+                <p th:if="${#fields.hasErrors('category')}" th:errors="*{category}" class="error"></p>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+
+    </body>
+</html>

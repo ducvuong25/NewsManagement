@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="/css/custom.css">
+    </head>
+    <body>
+        <a href="/newsForm" class="btn btn-primary" id="addNews">create new News</a>
+
+        <form id="searchForm" action="/seachNews" method="GET">
+            <input type="text" name="keyword">
+            <input type="submit" value="Tìm">
+        </form>
+        <table class="table table-bordered">
+            <tr>
+                <th>News Id</th>
+                <th>Title</th>
+                <th>Summary</th>
+                <th>Create date</th>
+                <th>staffName</th>
+                <th>cateName</th>
+            </tr>
+
+            <tr th:each="news: ${newsList}">
+                <td th:text="${news.newsId}"></td>
+                <td th:text="${news.title}"></td>
+                <td th:text="${news.summary}"></td>
+                <td th:text="${news.createdDated}"></td>
+                <td th:text="${news.staff.staffName}"></td>
+                <td th:text="${news.category.cateName}"></td>
+            </tr>
+        </table>
+        
+    </body>
+</html>

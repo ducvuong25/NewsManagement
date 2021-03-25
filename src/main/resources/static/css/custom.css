@@ -1,0 +1,12 @@
+.error {
+    color: red;
+}
+
+#addNews {
+    margin-top: 30px;
+}
+
+#searchForm {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
